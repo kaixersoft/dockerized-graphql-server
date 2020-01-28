@@ -1,0 +1,12 @@
+FROM node:10-alpine
+
+WORKDIR /usr/src/app
+
+COPY src /usr/src/app/src
+COPY package.json /usr/src/app
+COPY .babelrc /usr/src/app/.babelrc
+
+RUN npm install
+RUN npm install babel-cli -g --save
+
+CMD [ "npm", "start" ]

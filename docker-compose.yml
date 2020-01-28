@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  graphql:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-graphql
+    volumes:
+      - "graphql-storage:/graphql-data"
+    ports:
+      - 8787:8000
+    networks:
+      - db
+
+
+volumes:
+  graphql-storage:
+          driver: local
+
+networks:
+  db:
